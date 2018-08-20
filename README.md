@@ -5,6 +5,9 @@ Programming and Game Design is designed to help students develop the skills and 
 # Day 1
 
 Today, you will create a picture and send it to your classmates using code. Follow the steps below:
+
 1.) Go to [Piskel](https://www.piskelapp.com/)
+
 2.) Create a picture. Here's mine:
+
 3.) Encode your picture using binary (1 for black, 0 for white)
