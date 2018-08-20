@@ -1,0 +1,3 @@
+# Programming-and-Game-Design
+
+Programming and Game Design is designed to help students develop the skills and knowledge to create new things using code.  In this class, students will create applications, design games, and examine how programmers and designers collaborate in companies and startups. Students will work alone and with others to generate original, creative work while learning the basics of programming languages and design. While making videogames is a great way of learning these skills, this class is for anyone who is interested in creating new programs for phones, computers, or the web.
