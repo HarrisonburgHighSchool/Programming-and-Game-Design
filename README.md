@@ -8,6 +8,6 @@ Today, you will create a picture and send it to your classmates using code. Foll
 
 1.) Go to [Piskel](https://www.piskelapp.com/)
 
-2.) Create a picture. Here's mine: [Demo] (https://docs.google.com/drawings/d/1206Hy9EGrwSrv2kqYsmPZqgQXfsF_tQmkA1EMNYI_og/edit?usp=sharing)
+2.) Create a picture. Here's mine: [Demo](https://docs.google.com/drawings/d/1206Hy9EGrwSrv2kqYsmPZqgQXfsF_tQmkA1EMNYI_og/edit?usp=sharing)
 
 3.) Encode your picture using binary (1 for black, 0 for white)
