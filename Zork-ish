@@ -1,0 +1,89 @@
+#ZORK
+import random
+
+#Ensures valid input - Input is 2 possible answers, returns the chosen choice
+def testInput(choice1, choice2, promptQuestion):
+    prompt = -1
+    while(prompt != choice1 and prompt != choice2):
+        prompt = input(promptQuestion).upper()
+        if(prompt == choice1 or prompt == choice2):
+            return prompt
+        print("Please choose a valid answer such as " + choice1 + " or " + choice2)
+
+#Stats and vars
+attack = 1
+playerHP = 10
+
+monsterHP = 10
+monsterAttack = 1
+
+#Main        
+name = input("Please enter your name. ")
+print("Welcome to Zork, " + name)
+print("You open your eyes and groggily stand up. You are in the middle of a field. A white house to your RIGHT, a dark forest to your LEFT.")
+
+action = testInput("LEFT", "RIGHT", "Do you turn LEFT or RIGHT? ")
+
+print("You turned " + action)
+
+if action == 'RIGHT':
+    print("You walk up to the white house.")
+    print("There is no obvious entrance.")
+    action = testInput("SEARCH", "LEAVE", "Do you want to SEARCH for an entrance or LEAVE and enter the forest? ")
+
+    if action == 'SEARCH':
+        print("You search for an entrance to the house. There is a small window on the opposite side of the house. You climb in.")
+        print("The house is dark inside, but you can see something glowing red from underneath a desk in the corner.")
+        action = testInput("RUN", "PROCEED", "Is it a trap? Do you want to RUN or PROCEED? ")
+
+        if(action == "PROCEED"):
+            print("As you step closer your eyes adjust more to the dark and you are able to distinguish that the red glow is coming from a large ruby embedded in a sword.")
+            print("You collected: SWORD, +1 Attack")
+            attack+=1
+            print("The room appears to be otherwise empty so you exit through the window.")
+        else:
+            print("You turn tail and run. Barely squeezing yourself out of the window in time.")
+            print("You have no idea what you were running from, but you barely escaped.")
+            
+        action = testInput("ENTER", "WAIT", "You are back outside the house. Do you want to ENTER the forest or WAIT ")
+        while(action == "WAIT"):
+            print("You wait awhile and the sun sinks just a bit lower in the sky.")
+            action = testInput("ENTER", "WAIT", "Do you want to ENTER the forest or WAIT ")
+            
+print("You step into the dark forest.")
+print("ahead RIGHT you hear the sound of water. To your LEFT you see a cave ")
+action = testInput("LEFT", "RIGHT", "Do you turn LEFT or RIGHT? ")
+
+weapon="fists"
+monster="giant vampire bat"
+if(action == "RIGHT"):
+    monster="water snake"
+    print("You proceed to the sound of water and encounter a clearing with a murky swamp. A small stream trickles off a cliff into the swamp.")
+else:
+    print("You head towards the cave, but it's slow progress. You see movement 300 paces ahead inside the cave")
+if(attack == 2):
+    weapon = "sword"
+
+
+print("Faster than you'd expect from a monster of its size. A " + monster + " awakes and prepares to strike")
+print("You raise your " + weapon + " and get ready to fight for your life");
+
+while(playerHP > 0 and monsterHP > 0):
+    action = testInput("ATTACK", "DODGE", "Do you want to ATTACK or DODGE the monster?")
+    if(action == "ATTACK"):
+        dmg = random.randint(attack, attack+2)
+        print("You attack the monster and deal " + str(dmg) + " dmg")
+        monsterHP -= dmg        
+    if(random.randint(1, 3) != 1):
+        dmg = random.randint(monsterAttack, monsterAttack+2)
+        print("The " + monster + " attacks and deals " + str(dmg) + " damage")
+        playerHP -= dmg
+    else:
+        print("You dodge the monster's attack")
+ 
+
+if(playerHP > 0):
+    print("You strike the final blow and stand victorious over your enemy.")
+else:
+    print("You fall victim to the horrible monster.")
+    print("GAME OVER")
