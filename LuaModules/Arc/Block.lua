@@ -32,7 +32,7 @@ Block.__index = Block
 
 
 
-function Block:SetValues(blockType, xCoord, yCoord, imgImport)
+function Block:SetValues(blockType, xCoord, yCoord, imgImport, width, height)
   local block = {
     type = blockType,
     x = xCoord,
@@ -62,13 +62,13 @@ end
 
 function Block:Timeupdate(dt)
   self.anim.currentTime = self.anim.currentTime + love.timer.getDelta()
-  if self.anim.currentTime >= self.duration then
-      self.anim.currentTime = self.anim.currentTime - self.duration
+  if self.anim.currentTime >= self.anim.duration then
+      self.anim.currentTime = self.anim.currentTime - self.anim.duration
   end
 end
 
 function Block:Draw()
-  local blockNum = math.floor(self.anim.currentTime / self.duration * #self.anim.quads) + 1
+  local blockNum = math.floor(self.anim.currentTime / self.anim.duration * #self.anim.quads) + 1
   love.graphics.draw(self.img, self.anim.quads[blockNum], self.x, self.y, 0, 1)
 end
 
