@@ -11,3 +11,7 @@ At the end of the work day, fill out the [exit ticket.](https://docs.google.com/
 # Weekly Survey
 
 At the end of the week, fill out [this survey.](https://docs.google.com/forms/d/1DidB9yXJmA7EVDSTZHvamRLc7hnDxJq_KfaXKCUKPlU/edit#responses)
+
+# How to Download and Install Atom
+
+1. ) Go to [atom.io](atom.io)
