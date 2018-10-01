@@ -32,12 +32,7 @@ At the end of the week, fill out [this survey.](https://docs.google.com/forms/d/
 
 2.) Once the program loads, click "Install Packages"
 
-3.) Search for and install the following packages:
-    - atom-beautify
-    - love-ide
-    - language-pico8
-    - goto
-    - teletype
+3.) Search for and install the following packages: atom-beautify; love-ide; language-pico8; goto; teletype
     
 4.) Go to [love.org](https://love2d.org/) and install Love2D
 
