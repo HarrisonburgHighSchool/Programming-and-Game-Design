@@ -20,7 +20,9 @@ At the end of the week, fill out [this survey.](https://docs.google.com/forms/d/
 
 3.) Paste the token into the Atom window. Save this token in a document on your Google Drive for later.
 
-4.) To join my portal, click on "Join a portal" and paste the following URL into the window: [atom://teletype/portal/712432dc-be05-44e2-8748-08cdf25f79b2](atom://teletype/portal/712432dc-be05-44e2-8748-08cdf25f79b2)
+4.) To join my portal, click on "Join a portal" and paste the following URL into the window: 
+
+[atom://teletype/portal/712432dc-be05-44e2-8748-08cdf25f79b2](atom://teletype/portal/712432dc-be05-44e2-8748-08cdf25f79b2)
 
 5.) To share a portal, click the "share" switch and and send your URL to your collaborators.
 
