@@ -28,7 +28,7 @@ At the end of the week, fill out [this survey.](https://docs.google.com/forms/d/
 
 # How to Download and Install Atom
 
-1. ) Go to [atom.io](atom.io)
+1.) Go to [atom.io](atom.io)
 
 2.) Once the program loads, click "Install Packages"
 
