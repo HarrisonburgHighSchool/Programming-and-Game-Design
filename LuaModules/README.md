@@ -13,3 +13,7 @@ Part 3: [Sound & Basic Physics](https://www.youtube.com/watch?v=eLSdUf1IXsI)
 
 Part 4: [Background Image, Soundtrack, & Particle System](https://www.youtube.com/watch?v=iT2hmjvgj-E)
 <br> - Basically, particle systems let you do explosions without animating an asset.
+
+<h3>Platformer</h3>
+
+[Platformer Tutorial](https://love2d.org/wiki/Tutorial:Baseline_2D_Platformer)
