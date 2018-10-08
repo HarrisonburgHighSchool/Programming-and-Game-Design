@@ -17,3 +17,6 @@ Part 4: [Background Image, Soundtrack, & Particle System](https://www.youtube.co
 <h3>Platformer</h3>
 
 [Platformer Tutorial](https://love2d.org/wiki/Tutorial:Baseline_2D_Platformer)
+
+<h3>Collisions</h3>
+[Bump Library](https://www.youtube.com/watch?v=9130QVnn7VU)
