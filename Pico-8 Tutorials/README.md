@@ -9,3 +9,5 @@ Here is a tutorial for making a space shooter game: https://ztiromoritz.github.i
 [Pico8 Cheatsheet](https://www.lexaloffle.com/bbs/?tid=28207) - You'll have to access this from a personal computer at home.  The school has blocked this one...
 
 [Pico8 API Cheatsheet](https://neko250.github.io/pico8-api) - This is a well designed manual of the APIs usable from within Pico8.
+
+[Collision Example](https://www.lexaloffle.com/bbs/?tid=2119)
