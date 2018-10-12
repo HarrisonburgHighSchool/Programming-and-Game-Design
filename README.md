@@ -12,6 +12,10 @@ At the end of the work day, fill out the [exit ticket.](https://docs.google.com/
 
 At the end of the week, fill out [this survey.](https://docs.google.com/forms/d/1DidB9yXJmA7EVDSTZHvamRLc7hnDxJq_KfaXKCUKPlU/edit#responses)
 
+# Video Tutorial Request Form
+
+Use [this form](https://docs.google.com/forms/d/e/1FAIpQLScTBXjQznk7u_SGysinN7g7dvHHg8paaaRecKdMOuyegke6Qg/viewform?usp=sf_link) to request that I make a video tutorial to post to Google Classroom.
+
 # How to set up Teletype in Atom
 
 1.) Click on the cell phone tower picture in the bottom right corner of Atom
