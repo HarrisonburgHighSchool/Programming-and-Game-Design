@@ -1,5 +1,9 @@
 # Pico-8 Resources
 
+<h2>API Cheatsheet</h2>
+
+This is an amazing cheatsheet for the Pico-8 API. If you don't know what something does, find it here: https://neko250.github.io/pico8-api/
+
 Here is a tutorial for making a space shooter game: https://ztiromoritz.github.io/pico-8-shooter/ 
 
 <h2>How To Make a Map</h2>
