@@ -49,6 +49,8 @@ Use [this form](https://docs.google.com/forms/d/e/1FAIpQLScTBXjQznk7u_SGysinN7g7
 4. Make a sprite walk while moving, and freeze while not moving
 5. Make 3 environmental animations (plants, fire, etc.)
 6. Make another animation for your sprite (e.g., attack, jump, sit down)
+7. Make a projectile
+8. Use particle effects to make the projectile break up on impact
 
 # How to set up Teletype in Atom
 
