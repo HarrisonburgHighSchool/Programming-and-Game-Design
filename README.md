@@ -16,6 +16,39 @@ At the end of the week, fill out [this survey.](https://docs.google.com/forms/d/
 
 Use [this form](https://docs.google.com/forms/d/e/1FAIpQLScTBXjQznk7u_SGysinN7g7dvHHg8paaaRecKdMOuyegke6Qg/viewform?usp=sf_link) to request that I make a video tutorial to post to Google Classroom.
 
+# Specialization Goals:
+
+**Environment Management**
+1. Mget or Map of Tiles
+2. Sense sprite location
+3. Make sprite slower on certain tiles
+4. Hazards
+5. Display message when above certain tiles
+6. Display message when close to NPC
+
+**Enemy Behavior**
+1. Make a number decrease by 10 every 2 seconds
+2. Make a sprite move to the right automatically
+3. Create a patrol pattern for your sprite
+4. Create 4 patrol patterns, with moving and waiting
+5. Randomly choose a patrol pattern (see me)
+
+**Combat**
+1. Make a number decrease by 5 when you press a button
+2. Make a number decrease by 5 when you press one button, and 10 when you press another
+3. Make one button a weapon selection button, and one button an attack button
+4. Make a game where you walk up to an enemy and attack (display enemy HP on the screen)
+5. Make a game where two players can attack one another
+6. Add a defensive move, so players can block attacks
+
+**Animation**
+1. Make a 2 frame animation
+2. Make a 3 frame animation
+3. Make a sprite animate while a button is being pressed
+4. Make a sprite walk while moving, and freeze while not moving
+5. Make 3 environmental animations (plants, fire, etc.)
+6. Make another animation for your sprite (e.g., attack, jump, sit down)
+
 # How to set up Teletype in Atom
 
 1.) Click on the cell phone tower picture in the bottom right corner of Atom
