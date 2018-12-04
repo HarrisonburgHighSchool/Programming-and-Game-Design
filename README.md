@@ -38,8 +38,9 @@ Use [this form](https://docs.google.com/forms/d/e/1FAIpQLScTBXjQznk7u_SGysinN7g7
 2. Make a number decrease by 5 when you press one button, and 10 when you press another
 3. Make one button a weapon selection button, and one button an attack button
 4. Make a game where you walk up to an enemy and attack (display enemy HP on the screen)
-5. Make a game where two players can attack one another
-6. Add a defensive move, so players can block attacks
+5. Add cooldown times to your attacks
+6. Make a game where two players can attack one another
+7. Add a defensive move, so players can block attacks
 
 **Animation**
 1. Make a 2 frame animation
