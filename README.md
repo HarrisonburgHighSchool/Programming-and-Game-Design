@@ -32,6 +32,7 @@ Use [this form](https://docs.google.com/forms/d/e/1FAIpQLScTBXjQznk7u_SGysinN7g7
 3. Create a patrol pattern for your sprite
 4. Create 4 patrol patterns, with moving and waiting
 5. Randomly choose a patrol pattern (see me)
+6. Make a player, and have the enemy chase it once it enters the enemie's sightline
 
 **Combat**
 1. Make a number decrease by 5 when you press a button
@@ -41,6 +42,7 @@ Use [this form](https://docs.google.com/forms/d/e/1FAIpQLScTBXjQznk7u_SGysinN7g7
 5. Add cooldown times to your attacks
 6. Make a game where two players can attack one another
 7. Add a defensive move, so players can block attacks
+8. Add hitbox indications to your attacks
 
 **Animation**
 1. Make a 2 frame animation
@@ -50,7 +52,7 @@ Use [this form](https://docs.google.com/forms/d/e/1FAIpQLScTBXjQznk7u_SGysinN7g7
 5. Make 3 environmental animations (plants, fire, etc.)
 6. Make another animation for your sprite (e.g., attack, jump, sit down)
 7. Make a projectile
-8. Use particle effects to make the projectile break up on impact
+8. Create an item-collection animation
 
 # How to set up Teletype in Atom
 
