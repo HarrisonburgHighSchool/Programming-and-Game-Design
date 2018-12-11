@@ -25,6 +25,7 @@ Use [this form](https://docs.google.com/forms/d/e/1FAIpQLScTBXjQznk7u_SGysinN7g7
 4. Hazards
 5. Display message when above certain tiles
 6. Display message when close to NPC
+7. Collision (see me)
 
 **Enemy Behavior**
 1. Make a number decrease by 10 every 2 seconds
@@ -32,7 +33,9 @@ Use [this form](https://docs.google.com/forms/d/e/1FAIpQLScTBXjQznk7u_SGysinN7g7
 3. Create a patrol pattern for your sprite
 4. Create 4 patrol patterns, with moving and waiting
 5. Randomly choose a patrol pattern (see me)
-6. Make a player, and have the enemy chase it once it enters the enemie's sightline
+6. Make a player, and have the enemy chase it once it enters the enemy's sightline
+7a. Give enemy HP & make the HP go down when you press a button (ask 'combat' team for help)
+7b. Make the enemy run away from the player when HP < 10
 
 **Combat**
 1. Make a number decrease by 5 when you press a button
@@ -53,6 +56,7 @@ Use [this form](https://docs.google.com/forms/d/e/1FAIpQLScTBXjQznk7u_SGysinN7g7
 6. Make another animation for your sprite (e.g., attack, jump, sit down)
 7. Make a projectile
 8. Create an item-collection animation
+9. Team up with a 'combat' or 'enemy behavior' coder and create animations for their systems
 
 # How to set up Teletype in Atom
 
