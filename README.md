@@ -36,8 +36,8 @@ Use [this form](https://docs.google.com/forms/d/e/1FAIpQLScTBXjQznk7u_SGysinN7g7
 4. Create 4 patrol patterns, with moving and waiting
 5. Randomly choose a patrol pattern (see me)
 6. Make a player, and have the enemy chase it once it enters the enemy's sightline
-7a. Give enemy HP & make the HP go down when you press a button (ask 'combat' team for help)
-7b. Make the enemy run away from the player when HP < 10
+7. Give enemy HP & make the HP go down when you press a button (ask 'combat' team for help)
+8. Make the enemy run away from the player when HP < 10
 
 **Combat**
 1. Make a number decrease by 5 when you press a button
