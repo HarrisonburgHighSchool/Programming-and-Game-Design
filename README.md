@@ -26,6 +26,8 @@ Use [this form](https://docs.google.com/forms/d/e/1FAIpQLScTBXjQznk7u_SGysinN7g7
 5. Display message when above certain tiles
 6. Display message when close to NPC
 7. Collision (see me)
+8. Display new map after leaving current screen
+9. Display random map after leaving current screen
 
 **Enemy Behavior**
 1. Make a number decrease by 10 every 2 seconds
