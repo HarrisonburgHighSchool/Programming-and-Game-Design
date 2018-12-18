@@ -1,13 +1,10 @@
 # Roguelike Tutorial
 ###### Note: most code here is written in pseudocode, unless otherwise indicated. It will often not run if you copy and paste.
 [Day 1: Character Movement & Asset Creation](#day-1-character-movement--asset-creation)
-
 [Day 2a: Stats](#day-2a-stats)
-
 [Day 2b: Maps in Love2D](#day-2b-maps-in-love2d)
 
 ## Day 1: Character Movement & Asset Creation
-Click [here]() to view the companion video.
 Okay, so first step is to set up character movement. This should be pretty easy for you by this point, but here are some resources just in case you need a refresher.
 
 Set up a file. Every file has three functions:
@@ -71,6 +68,8 @@ You'll notice that I just put a comment in the above snippet. Go ahead and fill 
 So now you have a sprite that moves left! Repeat three more times changing the `x` and `y` values as needed, and you're good to go!
 
 ## Day 2a: Stats
+Click [here](https://drive.google.com/file/d/1JjHnQLFnDnwRbWBLSIqwUr55jVMjUHhU/view)
+
 Stats are really important in a roguelike, if for no other reason than we need to keep track of HP so that we can start the game over at some point. You can also use stats to keep track of all sorts of things. They are really easy to make. Inside your `load()` function, create a variable:
 
 ```lua
@@ -137,6 +136,8 @@ player = {
 You can add as many as you want. Just make sure you use the `player.variable` format when you try to print them!
 
 ## Day 2b: Maps in Love2D
+Click [here](https://drive.google.com/file/d/1acDQ9yGcQHdcfy4TbbooX33ZbA-D5Frk/view) to view the companion video.
+
 Maps in Love2D are a little more complicated than in Pico-8, so this is a dedicated tutorial to help you figure it out.
 
 ###### Note: This code is written correctly to run in Love2D, so feel free to copy and paste as needed.
