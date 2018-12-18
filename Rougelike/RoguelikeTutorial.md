@@ -64,3 +64,9 @@ You'll notice that I just put a comment in the above snippet. Go ahead and fill 
 So now you have a sprite that moves left! Repeat three more times changing the `x` and `y` values as needed, and you're good to go!
 
 ## Day 2a: Stats
+Stats are really important in a roguelike, if for no other reason than we need to keep track of HP so that we can start the game over at some point. You can also use stats to keep track of all sorts of things. They are really easy to make. Inside your `load()` function, create a variable:
+
+```lua
+hp = 100
+```
+
