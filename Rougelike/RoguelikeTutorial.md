@@ -1,6 +1,8 @@
 # Roguelike Tutorial
 ###### Note: most code here is written in pseudocode, unless otherwise indicated. It will often not run if you copy and paste.
 [Day 1: Character Movement & Asset Creation](#day-1-character-movement--asset-creation)
+[Day 2a: Stats](#day-2a-stats)
+[Day 2b: Maps in Love2D](#day-2b-maps-in-love2d)
 
 ## Day 1: Character Movement & Asset Creation
 Okay, so first step is to set up character movement. This should be pretty easy for you by this point, but here are some resources just in case you need a refresher.
