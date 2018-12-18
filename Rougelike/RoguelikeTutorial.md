@@ -7,6 +7,7 @@
 [Day 2b: Maps in Love2D](#day-2b-maps-in-love2d)
 
 ## Day 1: Character Movement & Asset Creation
+Click [here]() to view the companion video.
 Okay, so first step is to set up character movement. This should be pretty easy for you by this point, but here are some resources just in case you need a refresher.
 
 Set up a file. Every file has three functions:
