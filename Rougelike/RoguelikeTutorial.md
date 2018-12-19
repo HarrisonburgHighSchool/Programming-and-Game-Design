@@ -6,6 +6,8 @@
 
 [Day 2b: Maps in Love2D](#day-2b-maps-in-love2d)
 
+[Day 3: Collision Detection](#day-3-collision-detection)
+
 ## Day 1: Character Movement & Asset Creation
 Okay, so first step is to set up character movement. This should be pretty easy for you by this point, but here are some resources just in case you need a refresher.
 
@@ -216,6 +218,8 @@ Now we have drawn the whole map to the screen. If we want to add more kinds of t
 
 ###### Note: Just a reminder that much of this code will not run correctly unless otherwise specified. Please translate the code snippets into the appropriate syntax based on your programming paradigm.
 
+Click [here](https://drive.google.com/file/d/1Mo1fSmjF8qKv3bCf4EbD6vtoJ69oRyGZ/view) to view the companion video.
+
 Collision detection will be the basis of all interactions in our game. Collision detection lets us fight enemies, pick up items, unlock doors, and do all sorts of other stuff. It is really important that you understand how this works so that you can set up these interactions in this and future games.
 
 At this point, you should have a `player` table full of different attributes. Here is an example:
@@ -312,7 +316,7 @@ if coin.exists == true then
     --don't forget to set coin.exists to false after the player overlaps it!
   end
 end
-``
+```
 These two pieces of code work together to make it so that the coin "disappears" after the player overlaps it.
 
 You will want to do something similar for enemies. However, instead of increasing a score, you probably want a value called `player.hp` to go down when the enemy is overlapping with the player. Start by making a new table:
