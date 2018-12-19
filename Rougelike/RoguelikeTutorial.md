@@ -211,3 +211,118 @@ end
 ```
 
 Now we have drawn the whole map to the screen. If we want to add more kinds of tiles, all we have to do is add another number to the table, and add another `if` statement to the `love.draw()` code. Try to figure it out yourself!
+
+## Day 3: Collision Detection
+
+###### Note: Just a reminder that much of this code will not run correctly unless otherwise specified. Please translate the code snippets into the appropriate syntax based on your programming paradigm.
+
+Collision detection will be the basis of all interactions in our game. Collision detection lets us fight enemies, pick up items, unlock doors, and do all sorts of other stuff. It is really important that you understand how this works so that you can set up these interactions in this and future games.
+
+At this point, you should have a `player` table full of different attributes. Here is an example:
+```lua
+player = {
+  x = 100,
+  y = 100,
+  w = 8, 
+  h = 8,
+  img = "filename"
+}
+```
+Next, you need to create similar tables for all the other things in your game. Coins, items, enemies, and NPCs should all have their own table. Here's an example of a table for a coin:
+```lua
+coin = {
+  x = 200,
+  y = 100,
+  w = 8,
+  h = 8,
+  value = 5,
+  img = "filename"
+}
+```
+I've added a `value` attribute which will be the number of points my coin is worth. Now the basic idea of collision detection is that we want to sense whether or not two rectangles are overlapping. If they are, we know that the two objects are overlapping. Then, we do something else based on this overlapping (make `player.hp` go down, make `player.score` go up, etc.).
+
+To do this, we will use a special function:
+###### Note: You may copy and paste this code after your `draw()` function.
+```lua
+function CheckCollision(x1,y1,w1,h1, x2,y2,w2,h2)
+  return x1 < x2+w2 and
+         x2 < x1+w1 and
+         y1 < y2+h2 and
+         y2 < y1+h1
+end
+```
+This function takes in information from two rectangles (`x1`, `y1`, `w1`, `h1`, `x2`, `y2`, `w2`, `h2`) and then gives us a true or false answer. True if the rectangles are overlapping, and false if they aren't.
+
+`CheckCollision()` is a function. This means that once we define it with the above code, we can type `CheckCollision(...)` and the program will jump down to the definition and run the code stored inside `CheckCollision`. Just like how variables are words that store numbers, functions are words that store snippets of code.
+
+Because `CheckCollision()` returns `true` or `false` based on whether or not the two rectangles are overlapping, we can use it in an `if` statement. Put this code in your `draw()` function:
+```lua
+if CheckCollision(10, 10, 10, 10, 15, 15, 10, 10) then
+  print("overlapping")
+end
+```
+What do you think will happen when you run it? Can you make it return `false` by changing the arguments inside `CheckCollision()`?
+
+Now our goal is to do something if the `player` and the `coin` are overlapping. This means two things: we need to write an `if` statement that checks if the `player` and `coin` are overlapping, and then we need to write some code that will enact what we want to happen. Here's step one:
+```lua
+if CheckCollision(player.x, player.y, player.w, player.h,   coin.x, coin.y, coin.w, coin.h) then
+  --do something
+end
+```
+What should we put inside the `if` statement? What do you want to happen if the `player` and `coin` are overlapping? Here's a hint, in the form of a new attribute inside `player`:
+```lua
+player = {
+  x = 100, 
+  y = 100, 
+  w = 8, 
+  h = 8,
+  img = "filename",
+  score = 0
+}
+```
+Write some code and see if it works.
+
+Now in most games, if you collect the coin it will disappear. In our game right now, it stays in place and the code inside the `if` statement will run over and over again. Instead, let's make the coin disappear. First, add a new attribute to `coin`:
+```lua
+coin = {
+  x = 200, 
+  ...
+  ...
+  exists = true
+}
+```
+The attribute called `exists` will keep track of whether or not the coin should still appear on screen. Before we collect the coin, `exists` should be set to true. After we collect the coin, `exists` should flip to false.
+
+Now let's write some code to make it work this way. First, we only want to draw the coin if `exists` is set to `true`.
+```lua
+function draw()
+  if coin.exists == true then
+    draw(coin.img, coin.x, coin.y)
+  end
+end
+```
+This `if` statement makes it so that if `coin.exists` is set to `false`, the coin will no longer be drawn to the screen.
+
+Next, we only want to check for collisions if the coin is still on the screen. So we need to enclose the `CheckCollisions()` statement inside of another `if` statement. It will look something like this:
+```lua
+if coin.exists == true then
+  if CheckCollision(...
+    ...
+    coin.exists = false
+    --don't forget to set coin.exists to false after the player overlaps it!
+  end
+end
+``
+These two pieces of code work together to make it so that the coin "disappears" after the player overlaps it.
+
+You will want to do something similar for enemies. However, instead of increasing a score, you probably want a value called `player.hp` to go down when the enemy is overlapping with the player. Start by making a new table:
+```lua
+enemy = {
+  x = 20,
+  y = 20,
+  w = 8,
+  h = 8, 
+  img = "filename",
+}
+```
+Next, add the appropriate code. Apply what you learned creating a `coin` so you can make `player.hp` decrease when `player` overlaps with `enemy`.
