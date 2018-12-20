@@ -8,6 +8,8 @@
 
 [Day 3: Collision Detection](#day-3-collision-detection)
 
+[Day 4: Spawning in Random Objects](#day-4-spawn-in-objects)
+
 ## Day 1: Character Movement & Asset Creation
 Okay, so first step is to set up character movement. This should be pretty easy for you by this point, but here are some resources just in case you need a refresher.
 
