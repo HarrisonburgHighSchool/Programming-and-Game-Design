@@ -335,6 +335,8 @@ Next, add the appropriate code. Apply what you learned creating a `coin` so you 
 
 ## Day 4: Spawn In Objects
 
+Click [here](https://drive.google.com/file/d/1RNNRh1e7jT-t89Z4FTVYwvBac3r60rmJ/view) to view the companion video.
+
 Now that you have created some coins and you know how to pick them up, it's time to start talking about spawning them in randomly. This is both pretty tricky to understand, and at the same time easy to set up. The first step is to find your `coin` object.
 
 ```lua
