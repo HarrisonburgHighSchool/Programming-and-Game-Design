@@ -330,3 +330,130 @@ enemy = {
 }
 ```
 Next, add the appropriate code. Apply what you learned creating a `coin` so you can make `player.hp` decrease when `player` overlaps with `enemy`.
+
+## Day 4: Spawn In Objects
+
+Now that you have created some coins and you know how to pick them up, it's time to start talking about spawning them in randomly. This is both pretty tricky to understand, and at the same time easy to set up. The first step is to find your `coin` object.
+
+```lua
+coin = {
+  x = 64,
+  y = 64,
+  w = 3,
+  h = 3,
+  sp = 2
+}
+```
+
+Your coin might look slightly different than mine. That's okay. The first step here is to make it so that the coin doesn't spawn in the same place every time. If I draw the coin right now:
+
+```lua
+spr(coin.sp, coin.x, coin.y)
+```
+
+It will always appear at 64, 64. Every time, no matter what. We want it to appear at a different spot every time we run the game. To do that, we need to set the coordinates of coin to a **random number**. Here's how to do it in Pico-8:
+
+```lua
+coin = {
+  x = rnd(0, 128),
+  y = rnd(0, 128)
+}
+```
+
+...and here's how to do it in Love2D:
+
+```lua
+coin = {
+  x - love.math.random(0, 800),
+  y = love.math.random(0, 600)
+}
+```
+
+Now run some code that draws your code to the screen. Observe where the coin is drawn, and then run the code again. It should be in a different place. Cool, right?
+
+Now that's great for drawing one coin, but what if we wanted to draw more than one at a random location? That makes things a little more complicated. 
+
+Right now, we are creating one `coin` object, with it's own set of attributes. What we need to do is make it so that we can make unlimited numbers of them without writing a large numbers of new coin tables. The first step to accomplish this is to create a function that creates a new coin. It's pretty straightforward:
+
+```lua
+function coinCreate()
+  local coin = {
+    x = rnd(0, 128),
+    y = rnd(0, 128)
+  }
+  return coin
+}
+```
+
+The middle part should look familiar: we are creating a table called `coin`, just the same as before. The stuff around it is new. What we are doing is **declaring a function**. A function is like a variable, but instead of storing a number it stores code. Inside the function called `coinCreate()`, we store the code that creates the coin and then we `return` the coin. This means that when we **call** `coinCreate()`, what we get is a table called `coin`. It's a little tricky to understand, but here's what it looks like in practice.
+
+```lua
+newCoin = coinCreate()
+print(newCoin.x)
+```
+
+What does `newCoin.x` equal? Well, it equals the random number we created inside the `coinCreate()` function. Now we can create lots of coins by writing code like this in the `load()` function:
+
+```lua
+coin1 = coinCreate()
+coin2 = coinCreate()
+coin3 = coinCreate()
+```
+
+...and I can draw them to the screen by putting this code into my `draw()` function:
+
+```lua
+spr(coin1.img, coin1.x, coin1.y)
+spr(coin2.img, coin2.x, coin2.y)
+spr(coin3.img, coin3.x, coin3.y)
+```
+
+That works great. Run the code again, and your coins will be in different spots on the screen. Very awesome.
+
+But we can do even better. Let's store 10 coins into their own table:
+
+```lua
+coins = {}
+for i = 1, 10 do
+  coins[i] = coinCreate()
+end
+```
+
+Now we could draw one coin like this:
+
+```lua
+spr(coins[1].img, coins[1].x, coins[1].y)
+```
+
+Or we could draw all 10 coins at once like this:
+
+```lua
+for i = 1, 10 do
+  spr(coins[i].img, coins[i].x, coins[i].y)
+end
+```
+
+Now we are in a situation where we can easily create and draw as many randomly-placed coins as we like. Now that just leaves us with the not-small issue of collision detection on all of these coins. We should do it with another `for` loop like this:
+
+```lua
+for i = 1, 10 do
+  if coin[i].exists == true then
+    if CheckCollision(player.x, player.y, player.w, player.h, coin[i].x, coin[i].y, coin[i].w, coin[i].h) then
+      coin[i].exists = false
+      score = score + 1
+     end
+   end
+ end
+ ```
+ 
+ And then, draw the coins like this (the same way we did in the collision detection tutorial, except with a `for` loop).
+ 
+```lua
+for i = 1, 10 do
+  if coin[i].exists == true then
+    spr(coin[i].img, coin[i].x, coin[i].y)
+  end
+end
+```
+
+So after all that, we can create any number of randomly placed coins, and we can also pick them up. Try it with enemies now!
