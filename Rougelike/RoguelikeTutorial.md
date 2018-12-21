@@ -476,8 +476,7 @@ One thing that will make this process a whole lot easier is to make a function t
 
 ```lua
 function roomChange()
-  local room
-  return room
+
 end
 ```
 This function won't do anything for now. But next comes the business of decide _when_ to change rooms. I think the best thing is to change rooms when the player goes off screen. This code goes in `_update()`:
@@ -572,8 +571,7 @@ Try it out! Every time we run the game, we will get a new room. Now the only lef
 
 ```lua
 function roomChange()
-  local room = rooms[rnd(5)]
-  return room
+  room = rooms[rnd(5)]
 end
 ```
 
@@ -581,7 +579,7 @@ Try it out! Can you think of any improvements?
 
 ### Love2D
 
-Table madness! Love2D makes it a little tricky to draw maps, as you have already experienced. Here is what you should have in the way of rooms and such: a map template, that looks something like this:
+Table madness! Love2D makes it a little tricky to draw maps, as you have already experienced. Here something that you might have in your `load()` function:
 
 ```lua
 mapTemplate1 = {
@@ -591,8 +589,128 @@ mapTemplate1 = {
   {1, 1, 2, 1, 1},
   {1, 1, 1, 1, 1}
 }
+
+map = {}
+for y = 1, 5 do
+  map[y] = {}
+  for x = 1, 5 do
+    map[y][x] = Tile:Create{type = mapTemplate[y][x], x = (x-1)*48, y = (y-1)*48}
+  end
+end
 ```
-...you should have a file called `tile.lua` with class code in it (see video), and you should be able to draw a map based on the template using these classes. Now the next step is to store 5 different maps in a table called `rooms` so that we can choose a random map to draw to the screen
+
+. . . and here's a `draw()` function that would work with that:
+
+```lua
+function love.draw()
+  for y = 1, 5 do
+    for x = 1, 5 do
+      love.graphics.draw(map[y][x].img, map[y][x].x, map[y][x].y)
+    end
+  end
+end
+```
+
+If this looks unfamiliar to you, then go back and watch the video for Day 2b. We need to change a couple of things. We must:
+1. Create more rooms
+2. Randomly select a room from the map to draw, and
+3. Draw that room when we exit the screen
+The first one is pretty simple. First, change `map` to `room`:
+
+```lua
+room = {}
+for y = 1, 5 do
+  room[y] = {}
+  for x = 1, 5 do
+    room[y][x] = Tile:Create{type = mapTemplate[y][x], x = (x-1)*48, y = (y-1)*48}
+  end
+end
+```
+. . . and change `mapTemplate` to `room1`:
+
+```lua
+room1 = {
+  {1, 2, 1, 1, 2},
+  {1, 1, 1, 1, 1},
+  {2, 2, 1, 2, 2},
+  {1, 1, 2, 1, 1},
+  {1, 1, 1, 1, 1}
+}
+
+map = {}
+for y = 1, 5 do
+  map[y] = {}
+  for x = 1, 5 do
+    map[y][x] = Tile:Create{type = room1[y][x], x = (x-1)*48, y = (y-1)*48}
+  end
+end
+```
+Now we should **abstract** the room-loading process into its own **function** like so:
+
+```lua
+function loadRoom(roomTemplate)
+  local map = {}
+  for y = 1, 5 do
+    map[y] = {}
+    for x = 1, 5 do
+      map[y][x] = Tile:Create{type = roomTemplate[y][x], x = (x-1)*48, y = (y-1)*48}
+    end
+  end
+  return map
+end
+```
+Don't forget to **return** `map`! Make sure you cut and paste the `loadRoom()` function **outside** of the `load()` function.
+
+Now when we want to draw a room, all we have to do is type `loadRoom(room1)`. Here's what the top of your file should look like:
+
+```lua
+function loadRoom(roomTemplate)
+  local map = {}
+  for y = 1, 5 do
+    map[y] = {}
+    for x = 1, 5 do
+      map[y][x] = Tile:Create{type = roomTemplate[y][x], x = (x-1)*48, y = (y-1)*48}
+    end
+  end
+  return map
+end
+
+function love.load()
+  room1 = {
+    {1, 2, 1, 1, 2},
+    {1, 1, 1, 1, 1},
+    {2, 2, 1, 2, 2},
+    {1, 1, 2, 1, 1},
+    {1, 1, 1, 1, 1}
+  }
+  room = loadRoom(room1)
+end
+```
+Run the code to make sure it works. It should be exactly the same as it was before. But now, we can change rooms very easily. Make another room template in `load()`:
+
+```lua
+room2 = {
+  {1, 1, 1, 1, 1},
+  {1, 1, 1, 1, 1},
+  {1, 1, 1, 1, 1},
+  {1, 1, 1, 1, 1},
+  {1, 1, 1, 1, 1}
+}
+```
+
+. . . and load it into `room` instead of loading in `room1`:
+
+```lua
+room = loadRoom(room2)
+```
+
+Run the code, and make sure it draws your new map.
+
+Now we are in a position where we can choose which room loads at the beginning of the game. But what if we wanted to load a random room? We must create more tables to accomplish this. First, create a table in the `load()` function to store all the room templates:
+```lua
+rooms = {}
+```
+Then, store all your room templates in this table:
 
 ```lua
 rooms[1] = mapTemplate1
@@ -601,10 +719,33 @@ rooms[3] = mapTemplate3
 ...
 ```
 
-To draw a random map, first load a room based on it using a `for` loop (see video) into a table called `map` and then draw `map` to the screen using another `for` loop in your `draw()` function. Instead of using `mapTemplate1`, use `rooms[1]`. If you want to choose a random map, load the map based on a random number.
+Now when we use the `loadRoom()` function, we **pass in** a value from `rooms`, like so:
 
-Next step, you need to make a `roomChange()` function. You will run this code when it's time to change rooms. Like this:
+```lua
+loadRoom(rooms[1])
+```
+
+To choose a random room at the beginning of the game, all we have to do is create a random number, and use that random number to **index** a room template. Like so:
+
+```lua
+room = loadRoom(rooms[love.math.random(5)])
+```
+Now, whenever we want to load a new room, we just do the exact same thing. So our empty `roomChange()` function should look like this:
 
 ```lua
 function roomChange()
-  
+  room = loadRoom(rooms[love.math.random(5)])
+end
+```
+
+Try it out, and make sure it runs okay. Here are the steps in list form to make sure you didn't forget anything:
+1. Follow up to the end of the Day 2b video tutorial
+2. Create an empty `roomChange()` function
+3. Write `if` statements in the `update()` function to change the room based on the player's position
+4. Change variable names, and then create an **abstraction** of the map-loading process (`loadRoom()`)
+5. Create more room templates, if necessary
+6. Load rooms into a `rooms` table based on the room templates using the `loadRoom()` function
+7. Choose a random room to load at the beginning of the game
+8. Fill in the `roomChange()` function.
+
+Please ask questions if you need help. This is really advanced stuff!
