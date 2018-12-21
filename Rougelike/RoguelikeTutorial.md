@@ -551,12 +551,12 @@ Now you might be thinking to yourself: "Oh, I remember how to do random numbers!
 rooms = {0, 17, 34, 51, 68}
 ```
 
-Now we'll use a random number to select one of the numbers stored in `rooms` to draw the map. Here's what that looks like:
+Now we'll use a random number to select one of the numbers stored in `rooms` to draw the map. Because `rnd()` gives a decimal number between 0 and the max number, we also need to round down with `flr()`and add "1" to the random number. Here's what that looks like:
 
 ```lua
 function _init()
   rooms = {0, 17, 34, 51, 68}
-  room = rooms[rnd(5)]
+  room = rooms[flr(rnd(5))+1]
 end
 
 ...
@@ -571,7 +571,7 @@ Try it out! Every time we run the game, we will get a new room. Now the only lef
 
 ```lua
 function roomChange()
-  room = rooms[rnd(5)]
+  room = rooms[flr(rnd(5))+1]
 end
 ```
 
