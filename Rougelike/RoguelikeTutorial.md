@@ -461,3 +461,148 @@ end
 ```
 
 So after all that, we can create any number of randomly placed coins, and we can also pick them up. Try it with enemies now!
+
+## Day 5: Random Maps
+
+###### Note: These methods differ substantially between Pico-8 and Love2D, so I will include example code that works in both paradigms.
+
+This part is a little weird. There are a ton of ways to make randomly generated maps, and each one has its merits and drawbacks. I'm only going the cover the simplest way to accomplish room randomization here. We can make improvements as needed.
+
+### Setting Things Up: Function Declaration
+
+One thing that will make this process a whole lot easier is to make a function that will switch the rooms for us when we need to. We will put different code in this function based on what method we end up with, but for now we'll just make an empty function to use later (put this on a new page):
+
+```lua
+function roomChange()
+  local room
+  return room
+end
+```
+This function won't do anything for now. But next comes the business of decide _when_ to change rooms. I think the best thing is to change rooms when the player goes off screen. This code goes in `_update()`:
+```lua
+if pl.x > 128 then
+  roomChange()
+end
+if pl.x < 0 then
+  roomChange()
+end
+```
+That's the code for if we go off the sides. You'll have to write the code for when the player goes off the top or bottom (Hint: use `pl.y`.)
+
+That sort of works, but since `pl.x` stays the same after the room spawns, the player will still be off the screen. So we need to teleport the player to the opposite side of the screen so it appears that the player enters a new room. Like so:
+
+```lua
+if pl.x > 128 then
+  roomChange()
+  pl.x = 1
+end
+```
+Now do it for the other four sides of the map!
+
+### Method 1: Nightmare House
+
+Have you ever had a nightmare where you are lost in a house, and even when you retrace your steps you can't find it back to where you started? I have, and this horrible circumstance is what we will recreate for Map Generation Method #1.
+
+Basically, we want the character to find themself in a random room each time they exit a room. If they go back the way they came, they will not find the previous room; rather, they will find a completely new, random room. Creepy!
+
+#### Pico-8
+
+We already know how to draw maps. The code goes into your `_draw()` function and it looks like this:
+
+```lua
+map(0, 0, 0, 0)
+```
+
+Now you can just ignore the last two arguments in the `map()` function; they will always be zero. The first two, however, are relevant. Change the first parameter to change what part of the map editor screen you load when you draw the map:
+
+```lua
+map(17, 0, 0, 0)
+```
+
+If this doesn't work, ask for help; it's likely that you haven't drawn your maps in the right place. Test out different numbers, try to get it so that you can draw all five of your maps. Use the `x: ` value in the map editor screen to choose your numbers (ask for help if this doesn't make sense to you).
+
+You should have five different numbers that you can put into your `map()` function to draw five different rooms. Obviously, we can't go in and type new numbers after the game is running, so we need to use a variable. Here's a condensed version of what your code might look like:
+
+```lua
+function _init()
+  room = 17
+end
+
+...
+...
+
+function _draw()
+  map(room, 0, 0, 0)
+end
+```
+
+So instead of using a **constant**, we use a **variable** that we **declare** in the `_init()` function.
+
+Now you might be thinking to yourself: "Oh, I remember how to do random numbers! I can make the maps random all on my own." And you would be right! Mostly. We _are_ going to use the `rnd()` function to choose our room. But instead of just doing something like this:
+
+```lua
+  room = rnd(17)
+```
+
+...which gets us any value between 0 and 17, we'll store all the numbers we want to use to draw the map in a **table** called `rooms`. Like this:
+
+```lua
+rooms = {0, 17, 34, 51, 68}
+```
+
+Now we'll use a random number to select one of the numbers stored in `rooms` to draw the map. Here's what that looks like:
+
+```lua
+function _init()
+  rooms = {0, 17, 34, 51, 68}
+  room = rooms[rnd(5)]
+end
+
+...
+...
+
+function _draw()
+  map(room, 0, 0, 0)
+end
+```
+
+Try it out! Every time we run the game, we will get a new room. Now the only left to do is make it so that, when we run the `roomChange()` function, it assigns a new room based on a random value selected from `rooms`. Like so:
+
+```lua
+function roomChange()
+  local room = rooms[rnd(5)]
+  return room
+end
+```
+
+Try it out! Can you think of any improvements?
+
+### Love2D
+
+Table madness! Love2D makes it a little tricky to draw maps, as you have already experienced. Here is what you should have in the way of rooms and such: a map template, that looks something like this:
+
+```lua
+mapTemplate1 = {
+  {1, 2, 1, 1, 2},
+  {1, 1, 1, 1, 1},
+  {2, 2, 1, 2, 2},
+  {1, 1, 2, 1, 1},
+  {1, 1, 1, 1, 1}
+}
+```
+...you should have a file called `tile.lua` with class code in it (see video), and you should be able to draw a map based on the template using these classes. Now the next step is to store 5 different maps in a table called `rooms` so that we can choose a random map to draw to the screen
+
+```lua
+rooms[1] = mapTemplate1
+rooms[2] = mapTemplate2
+rooms[3] = mapTemplate3
+...
+```
+
+To draw a random map, first load a room based on it using a `for` loop (see video) into a table called `map` and then draw `map` to the screen using another `for` loop in your `draw()` function. Instead of using `mapTemplate1`, use `rooms[1]`. If you want to choose a random map, load the map based on a random number.
+
+Next step, you need to make a `roomChange()` function. You will run this code when it's time to change rooms. Like this:
+
+```lua
+function roomChange()
+  
