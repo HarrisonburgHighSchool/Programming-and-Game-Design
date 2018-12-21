@@ -615,6 +615,7 @@ If this looks unfamiliar to you, then go back and watch the video for Day 2b. We
 1. Create more rooms
 2. Randomly select a room from the map to draw, and
 3. Draw that room when we exit the screen
+
 The first one is pretty simple. First, change `map` to `room`:
 
 ```lua
