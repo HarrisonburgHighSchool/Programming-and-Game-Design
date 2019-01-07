@@ -40,6 +40,8 @@ For your final, you will create a game of your choice. You will receive points b
 
 3. +1 to any element if animated
 
+4. Map Randomization
+
 #### 4 Points:
 
 1. Isometric Map
