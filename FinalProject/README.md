@@ -16,6 +16,8 @@ For your final, you will create a game of your choice. You will receive points b
 
 5. Gameplay Loop Diagram
 
+6. +1 point if element is animated
+
 #### 2 Points:
 
 1. Object Detection
@@ -28,9 +30,7 @@ For your final, you will create a game of your choice. You will receive points b
 
 6. Enemy Movement
 
-7. Collision
-
-8. Menu
+7. Menu
 
 #### 3 Points:
 
@@ -38,9 +38,9 @@ For your final, you will create a game of your choice. You will receive points b
 
 2. Items
 
-3. +1 to any element if animated
+3. Map Randomization
 
-4. Map Randomization
+4. Collision
 
 #### 4 Points:
 
